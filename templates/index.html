@@ -1,0 +1,30 @@
+<style>
+    a {text-decoration: none;}
+    ul {list-style-type: none;}
+    .menu li {display: inline-flex;padding-left: 20px;}
+    .menu a {font-size: 20px;color: black;}
+    .Doc-menu {text-align: center;}
+    .blockGor {display: inline-flex;}
+    .blockGor .content {padding-left: 20px;}
+</style>
+<div class="Doc-menu">
+    <ul class="menu">
+        <li><a href="{%url 'homepage' %}">Главная</a></li>
+        <li><a href="{% url 'about' %}">О нас</a></li>
+        <li><a href="#">Меню</a></li>
+        <li><a href="#">Контакты</a></li>
+    </ul>
+</div>
+<div class="blockGor">
+    {% for n in news %}
+    <div class="content">
+        <h4>{{n.title}}</h4>
+        {% if n.image %}
+        <img src="{{n.image.url}}" alt="200px">
+        {% endif %}
+        <p>{{n.desc|truncatewords:3}}</p>
+    </div>
+    {% endfor %}
+</div>
+
+
